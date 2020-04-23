@@ -13,6 +13,7 @@ public class Ch10Activity3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_ch10_3);
     }
+
     public void ok(View view){
         //2.设置子Activity的返回值
         EditText editText=(EditText)findViewById(R.id.ch10_3_tv);
@@ -24,6 +25,7 @@ public class Ch10Activity3 extends AppCompatActivity {
 
         finish();//关闭当前界面
     }
+
    public void cancel(View view){
        setResult(RESULT_CANCELED);//取消
        finish();//关闭当前界面
