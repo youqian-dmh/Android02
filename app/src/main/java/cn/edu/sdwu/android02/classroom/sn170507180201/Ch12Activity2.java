@@ -10,18 +10,20 @@ import android.view.View;
 
 public class Ch12Activity2 extends AppCompatActivity {
     private ServiceConnection serviceConnection;
-    private boolean bound;
+    private boolean bound;//判断是否解绑
     private MediaService mediaService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_ch12_2);
-        bound=false;
+        bound=false;//一开始是未解绑状态
 
+        //初始化服务链接
         serviceConnection=new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+               //如果建立的连接自动调用本方法
                 bound=true;
                 MediaService.MyBinder myBinder=(MediaService.MyBinder)iBinder;
                 mediaService=myBinder.getMediaService();
@@ -29,21 +31,24 @@ public class Ch12Activity2 extends AppCompatActivity {
 
             @Override
             public void onServiceDisconnected(ComponentName componentName) {
-
+                bound=false;
             }
         };
-
     }
     public void ch12_2_start(View view){
+        //点击事件的处理
         startServiceClick(view);
     }
     public void ch12_2_pause(View view){
+        //点击事件的处理
         startServiceClick(view);
     }
     public void ch12_2_stop(View view){
+        //点击事件的处理
         startServiceClick(view);
     }
     public void ch12_2_stopservice(View view){
+        //点击事件的处理
         startServiceClick(view);
     }
 
@@ -68,7 +73,7 @@ public class Ch12Activity2 extends AppCompatActivity {
         startService(intent);
     }
     public void bindClick(View view){
-        int id=view.getId();
+        int id=view.getId();//确定id  确认点击了哪一个按钮
         switch (id){
             case R.id.ch12_2_bind:
                 Intent intent=new Intent(this,MediaService.class);
@@ -91,6 +96,8 @@ public class Ch12Activity2 extends AppCompatActivity {
                 if (bound){
                     mediaService.stop();
                 }
+                break;
+
         }
     }
 }

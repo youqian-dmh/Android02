@@ -42,17 +42,22 @@ public class MediaService extends Service {
         }
         return super.onStartCommand(intent, flags, startId);
     }
+    //开始播放方法
     public void start(){
         mediaPlayer.start();
     }
+    //暂停播放方法
     public void pause(){
+        //判断是否在播放 如果在播放则暂停
         if (mediaPlayer.isPlaying()){
             mediaPlayer.pause();
         }
     }
+    //停止播放方法
     public void stop() {
         mediaPlayer.stop();
         //为了下一次的播放，需要调用prepar方法
+        //停止后在播放
         try {
 
             mediaPlayer.prepare();
@@ -61,11 +66,12 @@ public class MediaService extends Service {
         }
     }
 
+    //使用完后销毁
     @Override
     public void onDestroy() {
         Log.i(MediaService.class.toString(),"onDertory");
-        mediaPlayer.stop();
-        mediaPlayer.release();
+        mediaPlayer.stop();//停止服务
+        mediaPlayer.release();//释放资源
         super.onDestroy();
     }
 
