@@ -5,7 +5,11 @@
     <uses-permission android:name="android.permission" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
+    
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -59,9 +63,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".Ch14Activity1">
-
-        </activity>
+        <activity android:name=".Ch14Activity1"></activity>
 
         <provider
             android:name=".MyContentProvider"
